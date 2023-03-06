@@ -7,10 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.gov.sp.fatec.springtopicos20231.entity.Usuario;
+import br.gov.sp.fatec.springtopicos20231.exception.UsuarioNaoEncontradoException;
 import br.gov.sp.fatec.springtopicos20231.repository.UsuarioRepository;
 
 @Service
-public class UsuarioService {
+public class UsuarioService implements IUsuarioService {
 
     @Autowired
     private UsuarioRepository usuarioRepo;
@@ -31,7 +32,7 @@ public class UsuarioService {
     public Usuario buscarPorId(Long id) {
         Optional<Usuario> usuarioOp = usuarioRepo.findById(id);
         if(usuarioOp.isEmpty()) {
-            throw new IllegalArgumentException("Usuário não existe!");
+            throw new UsuarioNaoEncontradoException("Usuário não existe!");
         }
         return usuarioOp.get();
     }
