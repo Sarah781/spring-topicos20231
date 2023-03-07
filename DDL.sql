@@ -13,3 +13,4 @@ create table usr_usuario (
   primary key (usr_id),
   unique key uni_usuario_nome (usr_nome)
 );
+
