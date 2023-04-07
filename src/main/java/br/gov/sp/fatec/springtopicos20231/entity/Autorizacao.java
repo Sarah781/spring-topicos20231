@@ -1,34 +1,39 @@
 package br.gov.sp.fatec.springtopicos20231.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
-@Table(name = "texto_usuario")
-public class textos {
+@Table(name = "aut_autorizacao")
+public class Autorizacao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "texto_id")
+    @Column(name = "aut_id")
     private Long id;
 
-    @Column(name = "texto_nome")
+    @Column(name = "aut_nome")
     private String nome;
 
-    @Column(name = "texto_senha")
-    private String senha;
+    @ManyToMany(mappedBy = "autorizacoes")
+    @JsonIgnore
+    private List<Usuario> usuarios;
 
-    public textos(String nome, String senha) {
-        this.nome = nome;
-        this.senha = senha;
+    public Autorizacao() {
+        // Do nothing
     }
 
-    public textos() {
-        // Do Nothing
+    public Autorizacao(String nome) {
+        setNome(nome);
     }
 
     public Long getId() {
@@ -47,12 +52,13 @@ public class textos {
         this.nome = nome;
     }
 
-    public String getSenha() {
-        return senha;
+    public List<Usuario> getUsuarios() {
+        return usuarios;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
     }
+
     
 }
