@@ -10,7 +10,7 @@ public class MainController {
 
     @GetMapping
     public String hello() {
-        return "Oi! Não faço nada!";
+        return "Olá! Teste 1, 2, 3 ";
     }
     
 }
