@@ -15,22 +15,22 @@ public class Medicao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "mdc_id")//ok
+    @Column(name = "mdc_id")
     private Long id;
 
-    @Column(name = "mdc_data_hora")//ok
+    @Column(name = "mdc_data_hora")
     private LocalDateTime dataHora;
 
-    @Column(name = "mdc_temperatura")//ok
+    @Column(name = "mdc_temperatura")
     private Float temperatura;
 
-    @Column(name = "mdc_umidade")//ok
+    @Column(name = "mdc_umidade")
     private Float umidade;
 
-    @Column(name = "mdc_particulas")//ok
+    @Column(name = "mdc_particulas")
     private Float particulas;
 
-    @Column(name = "mdc_status")//ok
+    @Column(name = "mdc_status")
     private String status;
 
     @Column(name = "mdc_data_processamento")
